@@ -15,7 +15,7 @@ public interface UserMapperXML {
 
   int deleteUserById(Integer uId);
 
-  void updateUserById(User user);
+  void updateUser(User user);
 
   User getUserById(Integer uId);
 

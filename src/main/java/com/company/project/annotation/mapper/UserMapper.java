@@ -24,8 +24,8 @@ public interface UserMapper {
   @Delete("DELETE FROM t_user WHERE u_id = #{uId}")
   int deleteUserById(Integer uId);
 
-  @Update("UPDATE t_user SET test_field=#{testField} WHERE u_id = #{uId}")
-  void updateUserById(User user);
+  @Update("UPDATE t_user WHERE u_id = #{uId}")
+  void updateUser(User user);
 
   @Select("SELECT * FROM t_user WHERE u_id = #{uId}")
   User getUserById(Integer uId);
