@@ -35,9 +35,9 @@
   解决方案2: 在application.properties配置 mybatis.configuration.map-underscore-to-camel-case=true
   解决方案3: 增加自定义 Bean -> ConfigurationCustomizer 然后设置属性
   -->
-  <select id="getUserById" resultType="com.company.project.entity.User">
+  <select id="getUserById" resultType="com.company.project.entity.User2">
     SELECT *
-    FROM t_user
+    FROM t_user2
     WHERE u_id = #{uId}
   </select>
 </mapper>

@@ -2,6 +2,7 @@ package com.company.project.controller;
 
 import com.company.project.annotation.mapper.UserMapper;
 import com.company.project.entity.User;
+import com.company.project.entity.User2;
 import com.company.project.xml.mapper.UserMapperXML;
 import java.util.Random;
 import java.util.UUID;
@@ -59,8 +60,8 @@ public class UserController {
    * 更新一个用户
    */
   @RequestMapping(value = "/update/{pathId}")
-  public User updatetUser(@PathVariable("pathId") Integer uId) {
-    User user = userMapperXML.getUserById(uId);
+  public User2 updatetUser(@PathVariable("pathId") Integer uId) {
+    User2 user = userMapperXML.getUserById(uId);
     user.setName("名字" + new Random().nextInt(10));
     user.setAge(new Random().nextInt(100));
     user.setTestField(UUID.randomUUID().toString());
@@ -74,10 +75,21 @@ public class UserController {
    * 查询一个用户
    */
   @GetMapping(value = "/get/{pathId}")
-  public User getUser(@PathVariable("pathId") Integer uId) {
+  public User2 getUser(@PathVariable("pathId") Integer uId) {
     //    return userMapper.getUserById(uId);
     return userMapperXML.getUserById(uId);
     //    return sqlSessionTemplate.selectOne("user-namespace.getUserById", uId);
+  }
+
+
+  /**
+   * 多数据源查询一个用户
+   */
+  @GetMapping(value = "/datasource/{uId}")
+  public String testDataSource(@PathVariable("uId") Integer uId) {
+    User user = userMapper.getUserById(uId);
+    User2 user2 = userMapperXML.getUserById(uId);
+    return user.toString() + "\n" + user2.toString();
   }
 
 }

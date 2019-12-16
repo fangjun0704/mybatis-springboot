@@ -2,6 +2,7 @@ package com.company.project.xml.mapper;
 
 
 import com.company.project.entity.User;
+import com.company.project.entity.User2;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -15,8 +16,8 @@ public interface UserMapperXML {
 
   int deleteUserById(Integer uId);
 
-  void updateUser(User user);
+  void updateUser(User2 user);
 
-  User getUserById(Integer uId);
+  User2 getUserById(Integer uId);
 
 }
