@@ -21,12 +21,12 @@ public class DataSource2Config {
    */
   @ConfigurationProperties(prefix = "spring.datasource.db2")
   @Bean(name = "dataSource2")
-  public DataSource dataSource() {
+  public DataSource dataSource2() {
     return DataSourceBuilder.create().build();
   }
 
   @Bean(name = "sqlSessionFactory2")
-  public SqlSessionFactory test1SqlSessionFactory(@Qualifier("dataSource2") DataSource datasource)
+  public SqlSessionFactory sqlSessionFactory2(@Qualifier("dataSource2") DataSource datasource)
       throws Exception {
     SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
     bean.setDataSource(datasource);
@@ -45,7 +45,7 @@ public class DataSource2Config {
   }
 
   @Bean("sqlSessionTemplate2")
-  public SqlSessionTemplate test1sqlsessiontemplate(
+  public SqlSessionTemplate sqlSessionTemplate2(
       @Qualifier("sqlSessionFactory2") SqlSessionFactory sessionfactory) {
     return new SqlSessionTemplate(sessionfactory);
   }
